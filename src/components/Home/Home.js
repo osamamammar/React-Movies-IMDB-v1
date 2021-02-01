@@ -77,8 +77,10 @@ class Home extends Component {
           currentPage: result.page,
           totalPages: result.total_pages,
         });
-      });
+      })
+      .catch((error) => console.error("Error", error));
   };
+
   render() {
     return (
       <div className="rmdb-home">
