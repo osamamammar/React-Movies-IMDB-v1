@@ -3,7 +3,7 @@ import FontAwesome from "react-fontawesome";
 import { calcTime, convertMoney } from "../../../helpers";
 import "./MovieInfoBar.css";
 
-const MovieInfoBar = (props) => {
+const MovieInfoBar = ({ time, budget, revenue }) => {
   return (
     <div className="rmdb-movieinfobar">
       <div className="rmdb-movieinfobar-content">
@@ -14,7 +14,7 @@ const MovieInfoBar = (props) => {
             size="2x"
           ></FontAwesome>
           <span className="rmdb-movieinfobar-info">
-            Running time:{calcTime(props.time)}
+            Running time:{calcTime(time)}
           </span>
         </div>
         <div className="rmdb-movieinfobar-content-col">
@@ -24,7 +24,7 @@ const MovieInfoBar = (props) => {
             size="2x"
           ></FontAwesome>
           <span className="rmdb-movieinfobar-info">
-            Budget:{convertMoney(props.budget)}
+            Budget:{convertMoney(budget)}
           </span>
         </div>
         <div className="rmdb-movieinfobar-content-col">
@@ -34,7 +34,7 @@ const MovieInfoBar = (props) => {
             size="2x"
           ></FontAwesome>
           <span className="rmdb-movieinfobar-info">
-            Revenue:{convertMoney(props.revenue)}
+            Revenue:{convertMoney(revenue)}
           </span>
         </div>
       </div>
