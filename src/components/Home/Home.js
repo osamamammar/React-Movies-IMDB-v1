@@ -70,6 +70,7 @@ class Home extends Component {
     }
     this.fetchItems(endPoint);
   };
+
   fetchItems = (endPoint) => {
     fetch(endPoint)
       .then((response) => response.json())
@@ -103,16 +104,16 @@ class Home extends Component {
     } = this.state;
     return (
       <div className="rmdb-home">
-        {heroImage ? (
+        {heroImage && !searchTerm ? (
           <div>
             <HeroImage
               image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
               title={heroImage.original_title}
               text={heroImage.overview}
             ></HeroImage>
-            <SearchBar callback={this.searchItems}></SearchBar>
           </div>
         ) : null}
+        <SearchBar callback={this.searchItems}></SearchBar>
         <div className="rmdb-home-grid">
           <FourColGrid
             header={searchTerm ? "search Result" : "Popular Movies"}
@@ -135,7 +136,7 @@ class Home extends Component {
             })}
           </FourColGrid>
           {loading ? <Spinner></Spinner> : null}
-          {currentPage <= totalPages && !loading ? (
+          {currentPage < totalPages && !loading ? (
             <LoadMoreBtn
               text="Load More"
               onClick={this.loadMoreItems}
